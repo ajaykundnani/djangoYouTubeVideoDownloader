@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <style>
+            input{
+                width: 60%;
+                height: 5%;
+            }
+            form{
+                margin-top: 15%;
+            }
+            body{
+                background-color: coral;
+            }
+            button{
+                background-color: lightblue;
+                width: 15%;
+                height: 5%;
+                cursor: pointer;
+            }
+            table{
+                margin-top: 10%;
+                background-color: lightskyblue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 align='center'> YouTube Video Downloader </h1>
+        <form method="POST" action="" align='center'>
+           {% csrf_token %}
+           <input type="text" name="video_name" placeholder="Enter YouTube Link here.."/>
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if stream %}
+        <table border="1">
+            <tr>
+                <th>Title</th>
+                <th>Resolution</th>
+                
+            </tr>
+            <tr>
+                <td>{{stream.title}}</td>
+                <td>{{stream.resolution}}</td>
+              
+            </tr>
+            {% if c %}
+            <tfoot>
+                <tr>
+                    <h3>Your Video Is Download Successfully</h3>
+                </tr>
+            </tfoot>
+            {% endif %}
+        </table>
+        
+        {% endif %}
+    </body>
+</html>
